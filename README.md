@@ -103,7 +103,7 @@ veggie-shop-app
 ## Getting Started
 1. Clone the repository:
    ```
-   git clone https://github.com/<username>/veggie-shop-app.git
+   git clone https://github.com/livioangelim/veggie-shop-app.git
    ```
 2. Navigate to the project directory:
    ```
@@ -113,14 +113,6 @@ veggie-shop-app
    ```
    ./mvnw spring-boot:run
    ```
-
-## Technologies Used
-- Java 11
-- Spring Boot
-- Thymeleaf
-- Maven
-- H2 Database (for development)
-
 
 ## Technologies Used
 - Java 17
@@ -196,12 +188,6 @@ The application follows a layered architecture:
 - **Encapsulation**: Private fields with accessor methods
 - **Polymorphism**: Interface implementations for services
 - **Abstraction**: Abstract classes and interfaces for common behavior
-
-## Contributing
-Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## Contributing
 Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
