@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Product List - Veggie Shop</title>
+</head>
+
+<body>
+    <header th:replace="fragments/header :: header"></header>
+
+    <div class="product-list-container">
+        <h1>Available Products</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Inventory</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.name}"></td>
+                    <td th:text="${product.price}"></td>
+                    <td th:text="${product.inventory}"></td>
+                    <td>
+                        <a th:href="@{/product/details/{id}(id=${product.id})}">View</a>
+                        <a th:href="@{/product/form/{id}(id=${product.id})}">Edit</a>
+                        <a th:href="@{/product/delete/{id}(id=${product.id})}" 
+                           onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/product/form" class="btn">Add New Product</a>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+
+</html>
