@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Welcome to Veggie Shop</title>
+</head>
+
+<body>
+    <header th:replace="fragments/header.html"></header>
+
+    <main>
+        <h1>Welcome to Veggie Shop</h1>
+        <p>Your one-stop shop for the freshest vegetables and farm produce.</p>
+        <a href="/product/list" class="btn">Shop Now</a>
+        <a href="/about" class="btn">Learn More About Us</a>
+    </main>
+
+    <footer th:replace="fragments/footer.html"></footer>
+</body>
+
+</html>
