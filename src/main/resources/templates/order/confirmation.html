@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Order Confirmation</title>
+</head>
+
+<body>
+    <header th:replace="fragments/header :: header"></header>
+
+    <div class="confirmation-container">
+        <h1>Order Confirmation</h1>
+        <p>Thank you for your order!</p>
+        <p>Your order number is: <span th:text="${order.id}"></span></p>
+        <p>Order Details:</p>
+        <ul>
+            <li th:each="item : ${order.items}">
+                <span th:text="${item.product.name}"></span> - Quantity: <span th:text="${item.quantity}"></span>
+            </li>
+        </ul>
+        <p>Total Amount: <span th:text="${order.totalAmount}"></span></p>
+        <a href="/" class="btn">Return to Home</a>
+    </div>
+
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+
+</html>
