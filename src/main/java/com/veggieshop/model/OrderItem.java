@@ -1,56 +1,44 @@
 package com.veggieshop.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
-public class OrderItem {
+@Table(name = "order_items")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class OrderItem extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", nullable = false)
+    private Order order;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    private int quantity;
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
-    public OrderItem() {
-    }
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
 
-    public OrderItem(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
+    @Column(name = "subtotal", nullable = false)
+    private BigDecimal subtotal;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getTotalPrice() {
-        return product.getPrice() * quantity;
+    // Helper method to calculate subtotal
+    @PrePersist
+    @PreUpdate
+    public void calculateSubtotal() {
+        if (price != null && quantity != null) {
+            subtotal = price.multiply(BigDecimal.valueOf(quantity));
+        }
     }
 }

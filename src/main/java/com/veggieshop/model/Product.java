@@ -1,71 +1,38 @@
 package com.veggieshop.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
+@Table(name = "products")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Product extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @NotBlank(message = "Product name is required")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull(message = "Price is required")
-    @Min(value = 0, message = "Price must be greater than or equal to zero")
-    private Double price;
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
 
-    @NotNull(message = "Inventory count is required")
-    @Min(value = 0, message = "Inventory must be greater than or equal to zero")
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
+
+    @Column(name = "inventory", nullable = false)
     private Integer inventory;
 
-    // Constructors
-    public Product() {
-    }
+    @Column(name = "category")
+    private String category;
 
-    public Product(String name, Double price, Integer inventory) {
-        this.name = name;
-        this.price = price;
-        this.inventory = inventory;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Integer getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Integer inventory) {
-        this.inventory = inventory;
-    }
+    @Column(name = "image_url")
+    private String imageUrl;
 }

@@ -129,21 +129,29 @@ veggie-shop-app
 
 ### Phase 1: Project Setup and Basic Structure (Week 1)
 - [x] Initialize Spring Boot project with necessary dependencies
-- [ ] Set up project structure following clean architecture principles
-- [ ] Configure H2 database for development
-- [ ] Implement basic Spring Security configuration
+- [x] Set up project structure following clean architecture principles
+- [x] Configure H2 database for development
+- [x] Implement basic Spring Security configuration
 - [ ] Create basic Thymeleaf templates with fragments
 
 ### Phase 2: Core Domain Implementation (Week 2)
-- [ ] Design and implement domain models with proper OOP principles
-  - [ ] Create base abstract classes/interfaces for common functionality
-  - [ ] Implement domain-specific validations
-  - [ ] Apply proper encapsulation and inheritance patterns
-- [ ] Implement repository layer with Spring Data JPA
+- [x] Design and implement domain models with proper OOP principles
+  - [x] Create base abstract classes/interfaces for common functionality
+  - [x] Implement domain-specific validations
+  - [x] Apply proper encapsulation and inheritance patterns
+- [x] Implement repository layer with Spring Data JPA
 - [ ] Develop service layer with well-defined interfaces
   - [ ] Apply SOLID principles, especially Single Responsibility and Interface Segregation
   - [ ] Implement proper exception handling
   - [ ] Add business validation logic
+
+### Additional Implementation Notes
+- [x] Fixed JPA bidirectional relationship issues between Order and OrderItem entities
+- [x] Added ModelMapper configuration for DTO conversions
+- [x] Implemented port availability checking for application startup
+- [x] Updated entity classes with proper validation annotations
+- [ ] Need to complete service implementations for all entities
+- [ ] Need to implement proper error handling throughout the application
 
 ### Phase 3: UI Development (Week 3)
 - [ ] Create responsive Thymeleaf templates
